@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="style.css" />
+    <title>JS Cheatcode</title>
+</head>
+<body>
+    <div class="container">
+        <ol>
+            <li> Rules for selecting variable names:
+                <ul>
+                    <li>letters, digits, underscores and $sign are allowed</li>
+                    <li>must begin with a $,_ or a letter</li>
+                    <li>case sensitive</li>
+                </ul>
+            </li>
+            <li class="margin-top">var vs let vs const
+                <ul>
+                    <li>var is globally scoped while let and const are block scope(can be accessed within braces only)</li>
+                    <li>var can be updated and re-declared within its scope, let can be updated but not re-declared and const can neither be updated nor be re-declared.
+                    </li>
+                    <li>var variables are initialized with undefined where as let and const variables are not initialized</li>
+                    <li>const must be initialized during declaration unlike var and let</li>
+                </ul>
+                <p class="margin-top"><span class="star">&starf;</span> avoid using var as it can result in unwanted bugs <span class="star">&starf;</span></p>
+            </li>
+            <li class="margin-top">Primitive data types:
+                <ol type="a">
+                    <li>null</li>
+                    <li>number</li>
+                    <li>bool</li>
+                    <li>bigInt</li>
+                    <li>string</li>
+                    <li>symbol</li>
+                    <li>undefined</li>
+                </ol>
+            </li>
+            <li class="margin-top">Objects: Object values are written as keys : value pairs (keys and value separated by a colon).
+                <pre><code class="language-js">const item = {
+    name : "Shreyan",
+    age : 25,
+};</code></pre>
+<pre><code class="language-js">const item = {
+    "name" : "Shreyan",
+    "age" : 25,
+};</code></pre>
+                <pre><code class="language-js">let item = { 
+    a: 5, 
+    45: true 
+}
+console.log(item[45]);
+// console.log(item.45);  property names cannot start with numbers when using dot notation.
+console.log(item.a);</code></pre>
+            </li>
+            <li class="margin-top">typeof() is used to find the datatype of a variable
+                <pre><code class="language-js">console.log(typeof(a));</code></pre>
+            </li>
+            <li>Arithmetic Operators:
+                <p>** &rarr; exponentation</p>
+                <p> / &rarr; divide 45/4 == 11.25 </p>
+            </li>
+            <li class="margin-top">Comparison Operator:
+                <p> == &rarr; equal to</p>
+                <p> != &rarr; not equal</p>
+                <p> === &rarr; equal value and type</p>
+                <p> !== &rarr; not equal value or not equal type</p>
+                <pre><code class="language-js">let a = 6;
+let b ="6";
+a===b // false
+a!==b // true</code></pre>
+            </li>
+            <li>Ternary Operator
+                <pre><code class="language-js">(marks > 10) ? "Yes" : "No";</code></pre>
+            </li>
+            <li> if..else
+                <pre><code class="language-js">if (age > 0 && age < 15) {
+    console.log("You are a kid");
+}
+else if (age >= 15 && age < 18) {
+    console.log("Wait couple of years to drive");
+}
+else if (age >= 18) {
+    console.log("You can drive");
+}
+else {
+    console.log("Invalid age");
+}</code></pre>
+            </li>
+            <li>Switch
+                <pre><code class="language-js">switch (a) {
+    case "banana":
+        console.log("Price of banana is $5");
+        break;
+    case "mango":
+    case "papaya":
+        console.log("Price of mango and papaya is $2");
+        break;
+    default:
+        console.log("Not found price of", a);
+}</code></pre>
+                <p>if a case matches then it will execute all the other lines including default until a break statement is encountered</p>
+            </li>
+            <li class="margin-top">Types of loops in JS:
+                <ol type="a">
+                    <li>for loop: loop a block of code number of times
+                        <pre><code class="language-js">for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+}</code></pre>
+                    </li>
+                    <li>for in loop: loops through the keys of an object
+                        <pre><code class="language-js">let obj = {
+    shreyan: 85,
+    janvi: 25,
+    kabita: 75,
+    sanjay: 70
+}
+for (let a in obj) {
+    console.log("marks of " + a + " is " + obj[a]);
+}</code></pre>
+                    </li>
+                    <li> for of loop: loops through arrays, strings and objects
+                        <pre><code class="language-js">const array1 = ['a', 'b', 'c'];
+for (const element of array1) {
+    console.log(element);
+}</code></pre>
+                    </li>
+                    <li>while loop
+                        <pre><code class="language-js">let n = 0;
+let x = 0;
+while (n < 3) {
+    n++;
+    x += n;
+}</code></pre>
+                    </li>
+                    <li>do while loop
+                        <pre><code class="language-js">let result = '';
+let i = 0;
+do {
+    i = i + 1;
+    result = result + i;
+} while (i < 5);
+console.log(result);</code></pre>
+                    </li>
+                </ol>
+            </li>
+            <li>Function:
+                <pre><code class="language-js">function myFunc(para1, para2) {
+    //code
+}</code></pre>
+            <p>An alternative method to invoke a function in JavaScript is by using the Fat Arrow Function syntax</p>
+            <ol type="a">
+                <li><pre><code class="language-js">const a = () => {
+
+};
+a();
+
+const b = (para1, para2) => {
+
+};
+b(val1, val2);</code></pre></li>
+                <li>Arrow function with only one parameter
+                    <pre><code class="language-js">const c = (para1) => {
+
+};
+c(val1);
+
+let d = para1 => {
+
+};
+d(val1);</code></pre>
+                <p>When there is only one parameter we can omit the parentheses</p>
+                </li> <br>
+                <li>Arrow function with implicit return
+                    <pre><code class="language-js">const a = () => 12; // returning 12 from the function</code></pre>
+
+                </li>
+            </ol>
+            </li>
+            <li>Default Parameters
+                <pre><code class="language-js">function func(a = 15, b = 10){
+    console.log(a,b);
+}
+func(2,3); 
+func();</code></pre>
+                <p>When value is passed it takes the passed value else it will take the default value</p>
+            </li> <br>
+            <li>Strings
+                <p>It can be created using:</p>
+                <ol type="a">
+                    <li>" "
+                        <pre><code class="language-js">let a = "Shreyan"</code></pre>
+                    </li>
+                    <li>' '
+                        <pre><code class="language-js">let a = 'Shreyan'</code></pre>
+                    </li>
+                    <li>` `
+                        <pre><code class="language-js">let a = `Shreyan`</code></pre>
+                        <p>This method of creating string is called template literals</p>
+                        <p>We can insert variables directly in template literal. This is called string interpolation</p>
+                        <pre><code class="language-js">let name = `Shreyan`;
+let a = `I am ${name}`;
+console.log(a);</code></pre>
+                    </li>
+                </ol>
+                <p>Escape sequence:</p>
+                <ul>
+                    <li>\n &rarr; new line</li>
+                    <li>\n &rarr; tab</li>
+                </ul>
+                <p class="margin-top">String properties and methods:</p>
+                <ol type="a">
+                    <li>length
+                        <pre><code class="language-js">let name = "Shreyan";
+console.log(name.length); //7</code></pre>
+                    </li>
+                    <li>toUpperCase()
+                        <pre><code class="language-js">let name = "Shreyan";
+console.log(name.toUpperCase()); //SHREYAN</code></pre>
+                    </li>
+                    <li>toLowerCase()
+                        <pre><code class="language-js">let name = "Shreyan";
+console.log(name.toLowerCase()); //shreyan</code></pre>
+                    </li>
+                    <li>slice()
+                        <pre><code class="language-js">let name = "Shreyan";
+console.log(name.slice(3,5)); //ey
+console.log(name.slice(3)); //eyan</code></pre>
+                    </li>
+                    <li>replace()
+                        <pre><code class="language-js">let name = "Shreyan";
+console.log(name.replace("Shreyan","Janu")); // Janu</code></pre>
+                    </li>
+                    <li>trim()
+                        <pre><code class="language-js">let name = "   Sh re yan    "
+console.log(name.trim()); // Sh re yan</code></pre>
+                        <p>Removes whitespaces from the beginning and the end</p>
+                    </li>
+                </ol>
+            </li> <br>
+            <li>Arrays:
+                <pre><code class="language-js">const fruits = ["apple" , "mango", "banana"];
+const details = ["Shreyan" , 25 , true];</code></pre>
+                <p><span class="star">&starf;</span> Arrays are mutable. Strings were immutable.<span class="star">&starf;</span></p>
+                <p class="margin-top">The keyword const is a little misleading.</p>
+                <p>It does NOT define a constant array. It defines a constant reference to an array.</p>
+                <p>Because of this, we can still change the elements of a constant array.</p>
+                <pre><code class="language-js">const fruits = ["apple" , "mango", "banana"];
+console.log(typeof(fruits)); //object</code></pre>
+                <p>In JS, arrays are also object</p>
+                <p class="margin-top">Array methods and properties:</p>
+                <ol type="a">
+                    <li>length
+                        <pre><code class="language-js">const fruits = ["apple" , "mango", "banana"];
+console.log(fruits.length); //3</code></pre>
+                    </li>
+                    <li>toString() - converts array into a comma separated string
+                        <pre><code class="language-js">const fruits = ["apple" , "mango", "banana"];
+console.log(fruits.toString()); //apple,mango,banana</code></pre>
+                    </li>
+                    <li>join() - converts array into string joined with the argument passed
+                        <pre><code class="language-js">const fruits = ["apple" , "mango", "banana"];
+console.log(fruits.join("-")); //apple-mango-banana</code></pre>
+                            <p>Argument can be any letter number or symbols</p>
+                        </li> <br>
+                    <li>pop() - removes the last element from the array
+                        <pre><code class="language-js">const fruits = ["apple" , "mango", "banana"];
+console.log(fruits.pop()); //banana</code></pre>
+                            <p>Updates the original array and returns the popped element</p>
+                    </li> <br>
+                    <li>push() - adds an element to the end of the array
+                        <pre><code class="language-js">const fruits = ["apple" , "mango", "banana"];
+console.log(fruits.push("grapes")); /4</code></pre>
+                            <p>Updates the original array and returns the length of the modified array</p>
+                    </li> <br>
+                    <li>shift() - removes first element from the array
+                        <pre><code class="language-js">const fruits = ["apple" , "mango", "banana"];
+console.log(fruits.shift()); //apple</code></pre>
+                            <p>Updates the original array and returns the shifted element</p>
+                    </li> <br>
+                    <li>unshift() - adds an element to the start of the array
+                        <pre><code class="language-js">const fruits = ["apple" , "mango", "banana"];
+console.log(fruits.unshift("grapes"));//4</code></pre>
+                            <p>Updates the original array and returns the length of the modified array</p>
+                    </li> <br>
+                    <li>delete
+                        <pre><code class="language-js">const fruits = ["apple" , "mango", "banana"];
+delete fruits[1];</code></pre>
+                        <p>Using delete leaves undefined holes in the array.</p>
+                        <p>Array after deletion: ['apple', empty, 'banana']</p>
+                    </li><br>
+                    <li>concat()
+                        <pre><code class="language-js">const a1 = [1,2,3];
+const a2 = [4,5,6];
+const a3 = [7,8,9];
+console.log(a1.concat(a2,a3)); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+console.log(a1); // [1, 2, 3]</code></pre>
+                        <p>Doesn't change the original array</p>
+                    </li> <br>
+                    <li>sort()
+                        <pre><code class="language-js">function fn(a,b){
+    return a-b;
+}
+let arr = [2,5,6,78,14,25,36,45,93,10,4];
+arr.sort();
+console.log(arr); // [10, 14, 2, 25, 36, 4, 45, 5, 6, 78, 93]
+arr.sort(fn);
+console.log(arr); // [2, 4, 5, 6, 10, 14, 25, 36, 45, 78, 93]</code></pre>
+                        <p>sort() changes the array alphabetically.</p>
+                        <p>to sort the array numerically we have to use the compare function.</p>
+                    </li> <br>
+                    <li>splice()
+                        <pre><code class="language-js">const arr = [1,4,6,8,2];
+arr.splice(2,1,20,25); // [6]</code></pre>
+                        <p>(position to delete,no of elements to delete,elements to add in that place)</p>
+                        <p>Updates the array and returns the deleted elements</p>
+                    </li> <br>
+                    <li>slice()
+                        <pre><code class="language-js">const arr = [1,4,6,8,2];
+console.log(arr.slice(2,4)); // [6, 8]
+console.log(arr.slice(3)); // [8, 2]</code></pre>
+                        <p>It creates a new array</p>
+                    </li> <br>
+                    <li>reverse()
+                        <pre><code class="language-js">const arr = [1,4,6,8,2];
+arr.reverse();</code></pre>
+                    </li>
+                </ol>
+                <p>Looping through an array:</p>
+                <ol type="a">
+                    <li>Classical for loop
+                        <pre><code class="language-js">let arr = [1, 5, 6, 9, 2, 3];
+for (let i = 0; i &lt; arr.length; i++) {
+    console.log(arr[i]);
+}</code></pre>
+                    </li>
+                    <li>forEach(func) - this calls a function for each element in an array.
+                        <pre><code class="language-js">let arr = [1, 5, 6, 9, 2, 3];
+arr.forEach((n,i,num)=>{
+    console.log(n,i,num);
+})</code></pre>
+                        <p>the first parameter takes the element, second takes the index and the third parameter takes the full array</p>
+                        <a href="https://www.freecodecamp.org/news/javascript-foreach-js-array-for-each-example/" target="_blank">Free Code Camp forEach()</a>
+                    </li> <br>
+                    <li>map(func) - creates a new array by performing some operation on each element.
+                        <pre><code class="language-js">let arr = [1, 5, 6, 9, 2, 3];
+let arr2  = arr.map((n,i,num)=>{
+    return n*i;
+})
+console.log(arr2);</code></pre>
+                        <a href="https://www.freecodecamp.org/news/javascript-map-how-to-use-the-js-map-function-array-method/" target="_blank">Free Code Camp map()</a>
+                    </li> <br>
+                    <li>filter(func) - creates a new array with values that passes a test.
+                        <pre><code class="language-js">let arr = [1, 5, 6, 9, 2, 3];
+let arr2  = arr.filter((n)=>{
+    return n>=5;
+})
+console.log(arr2);</code></pre>
+                    </li>
+                    <li>reduce(func)
+                        <pre><code class="language-js">const array1 = [1, 2, 3, 4];
+const initialValue = 0;
+const sumWithInitial = array1.reduce((accumulator, currentValue) => accumulator + currentValue, initialValue);
+// 0 + 1 + 2 + 3 + 4
+console.log(sumWithInitial);</code></pre>
+                    </li>
+                    <li>Array.from(object) - used in DOM manipulation, to create array from an object.
+                        <pre><code class="language-js">let name = "Shreyan"
+let str = Array.from(name);
+console.log(str);</code></pre>
+                    </li>
+                    <li>for of
+                        <pre><code class="language-js">let arr = [1, 5, 3, 6, 9, 8, 2];
+for (let elem of arr) {
+    console.log(elem);
+}</code></pre>
+                    </li>
+                    <li>for in
+                        <pre><code class="language-js">let arr = [1, 5, 3, 6, 9, 8, 2];
+for (let i in arr) {
+    console.log(arr[i]);
+}</code></pre>
+                    </li>
+                </ol>
+            </li>
+            <li>console object methods
+                <pre><code class="language-js">console.log(console)</code></pre>
+                <p>Use this to see all the console methods</p>
+                <p class="margin-top margin-bottom">Some of the console methods:</p>
+                <table class="margin-top">
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>assert()</td>
+                            <td>Writes an error message to the console if a assertion is false</td>
+                        </tr>
+                        <tr>
+                            <td>clear()</td>
+                            <td>Clears the console</td>
+                        </tr>
+                        <tr>
+                            <td>error()</td>
+                            <td>Outputs an error message to the console</td>
+                        </tr>
+                        <tr>
+                            <td>info()</td>
+                            <td>Outputs an informational message to the console</td>
+                        </tr>
+                        <tr>
+                            <td>log()</td>
+                            <td>Outputs a message to the console</td>
+                        </tr>
+                        <tr>
+                            <td>table()</td>
+                            <td>Displays tabular data as a table</td>
+                        </tr>
+                        <tr>
+                            <td>time()</td>
+                            <td>Starts a timer (can track how long an operation takes)</td>
+                        </tr>
+                        <tr>
+                            <td>warn()</td>
+                            <td>Outputs a warning message to the console</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </li> <br>
+            <li>Interacting using alert, prompt and confirm
+                <pre><code class="language-js">alert("Hello");</code></pre>
+                <pre><code class="language-js">let num = prompt("Enter a number");</code></pre>
+                <pre><code class="language-js">confirm("You are 18 or above");</code></pre>
+            </li>
+            <li>Window Object: it represents browser window and provides methods to control it. It is a global object.
+                <p>Everything in javascript comes under window object. window.console.log() is also correct. window. can be written with every methods.</p>
+            </li> <br>
+            <li>DOM: entire HTML is converted to a javascript object and is given the name document
+                <p>console.log(document) - the output gives the javascript representation of the HTML</p>
+                <pre><code class="language-js">document.body.style.background = "green";</code></pre>
+                <p>use .style to style(access css) the element</p>
+            </li> <br>
+            <li>BOM: The Browser Object Model(BOM) represents additional objects provided by the browser(host environment) for working with eveything except document.
+                <p>The functions alert/conform/prompt are also a part of the BOM</p>
+            </li> <br>
+            <li>Walking the DOM: DOM tree refers to the HTML page where all the nodes are objects.
+                <p class="margin-top">There are 3 main types of nodes in the DOM tree:</p>
+                <ol type="a">
+                    <li>text node</li>
+                    <li>element node</li>
+                    <li>comment node</li>
+                </ol> <br>
+                <p>A text node is always the leaf of a tree</p>
+                <span class="star">&starf;</span> document.body can sometimes be null if the javascript is written before the body tag <span class="star">&starf;</span>
+            </li> <br>
+            <li>Children of an element
+                <p>Direct as well as deeply nested elements of an element are called its children.</p>
+                <pre><code class="language-js">let node = element.firstChild</code></pre>
+                <pre><code class="language-js">let node = element.lastChild</code></pre>
+                <pre><code class="language-js">let nodeObjects = element.childNodes</code></pre>
+                <p>Following are always true:</p>
+                <ol type="a">
+                    <li>element.childNodes[0] === element.firstChild</li>
+                    <li>element.childNodes[element.childNodes.length-1] === element.lastChild</li>
+                </ol>
+                <p>element.hasChildNodes() to check whether there are any child nodes</p>
+                <p>childNodes looks like an array, but its not actually an array but a collection. we have to use Array.from(collection) to convert it into an array</p>
+                <p>They can be iterable using for of loop</p>
+            </li> <br>
+            <li> Siblings and parents
+                <pre><code class="language-js">document.documentElement.parentNode //document</code></pre>
+                <p>document.documentElement refers to the root element of the HTML document, which is typically the &lt;html&gt; element and &lt;html&gt; element is a child of the Document object itself.</p>
+                <p>The Document object is sometimes represented as #document in the DOM.</p>
+                <pre><code class="language-js">document.documentElement.parentElement //null</code></pre>
+            </li>
+            <li>Element only navigation:
+                <pre><code class="language-js">let element = document.previousElementSibling;</code></pre>
+                <pre><code class="language-js">let element = document.nextElementSibling;</code></pre>
+                <pre><code class="language-js">let element = document.firstElementChild;</code></pre>
+                <pre><code class="language-js">let element = document.lastElementChild;</code></pre>
+            </li>
+            <li>Searching the DOM
+                <ol type="a">
+                    <li><pre><code class="language-js"> let element = document.getElementById("id_value")</code></pre></li>
+                    <li><pre><code class="language-js"> let object = document.querySelectorAll("css_selector")</code></pre></li>
+                    <li><pre><code class="language-js"> let element = document.querySelector("css_selector")</code></pre>
+                        <p>Returns the first element for the given CSS selector</p></li>
+                    <li><pre><code class="language-js"> let object = document.getElementstByTagName("html_tag")</code></pre></li>
+                    <li><pre><code class="language-js"> let object = document.getElementstByClassName("class_value")</code></pre></li>
+                    <li><pre><code class="language-js"> let object = document.getElementstByName("name_value")</code></pre>
+                        <p>Used in &lt;input&gt; tag</p></li>
+                </ol>
+            </li> <br>
+            <li>console.dir() : the console.log() returns the object in its string representation and console.dir() recognizes the object just as an object and outputs its properties. Both log() and dir() returns the string just as a string.
+            </li> <br>
+            <li>tagName/ nodeName: read-only property which returns the tag/node name of the element on which it's called.
+                <p>tagName: only exists for element nodes</p>
+                <p>nodeName: defined for every node</p>
+                <pre><code class="language-js">let variable = document.getElementsByClassName("class_name");
+console.log(variable[0].tagName);</code></pre>
+            </li>
+            <li>innerHTML and outerHTML:
+                <p>innerHTML: sets/gets the inside of an element as a string. It is only valid for element nodes.</p>
+                <p>outerHTML: contains the innerHTML + the element itself</p>
+            </li> <br>
+            <li>textContent: provides access to the text inside te element: only text (minus all tags)</li> <br>
+            <li>hidden property: this attribute in the DOM property specifies whether the element is visible or not.
+                <pre><code class="language-html">&lt;div hidden&gt;I am hidden&lt;/div&gt;</code></pre>
+                <pre><code class="language-html">&lt;div id="element"&gt;I can be hidden&lt;/div&gt;
+&lt;script&gt;
+    let element = document.getElementById("element");
+    element.hidden = true;
+&lt;/script&gt;</code></pre>
+            </li> <br>
+            <li>Attribute methods:
+                <ul>
+                    <li>element.hasAttribute("name"): method to check for existence of an attribute</li>
+                    <li>element.getAttribute("name"): method used to get the value of an attribute</li>
+                    <li>element.setAttribute("name","value"): method used to set the value of an attribute</li>
+                    <li>element.removeAttribute("name"): method to remove the attribute from element</li>
+                    <li>element.attribute: method to get the collection of all attributes</li>
+                </ul>
+            </li> <br>
+            <li>data-* attributes: use to create custom attributes. They are available in a property named dataset.
+                <p>example: data-shreyan. It is a custom attribute and can be accessed as elem.dataset.shreyan, If i use elem.dataset it will give you all the custom attributes.</p>
+            </li> <br>
+            <li>Insertion methods
+                <pre><code class="language-js">let div= document.createElement('div');
+div.className = "alert";
+div.innerHTML = "&lt;span&gt;hello&lt;/span&gt;";
+document.body.append(div);</code></pre>
+                <p>Here are some more insertion  methods:</p>
+                <ul>
+                    <li>node.append(e) -- append at the end of node</li>
+                    <li>node.prepend(e) -- Insert at the beginning of node</li>
+                    <li>node.before(e) -- Insert before node</li>
+                    <li>node.after(e) -- Insert after node</li>
+                    <li>node.replaceWith(e) -- Replaces node with the given node</li>
+                </ul>
+            </li> <br>
+            <li>insertAdjacentHTML/Text/Element
+                <pre><code class="language-html">&lt;div id="div"&gt;&lt;/div&gt;
+&lt;script&gt;
+    let div = document.getElementById("div");          
+    div.insertAdjacentHTML("beforebegin",'&lt;p&gt;Hello&lt;/p&gt;');
+    div.insertAdjacentHTML("afterend",'&lt;p&gt;Bye&lt;/p&gt;');
+&lt;/script&gt;</code></pre>
+                <ul>This method can take one of the following values:
+                    <li>beforebegin -- insert HTML immediately before element</li>
+                    <li>afterbegin -- insert HTML into element at the beginning</li>
+                    <li>beforeend -- insert HTML into element at the end</li>
+                    <li>afterend -- insert HTML immediately after element</li>
+                </ul>
+            </li> <br>
+            <li>Node removal:
+                <pre><code class="language-js">let id1 = document.getElementById("id1");
+id1.remove();</code></pre>
+            </li>
+            <li>className and classList:
+                <p>If we assign something to elem.className, it replaces the whole string of classes.</p> <br>
+                <p>Often we want to add/remove/toggle a single class.</p>
+                <ul>
+                    <li>elem.classList.add/remove("class") -- adds/removes a class.</li>
+                    <li>elem.classList.toggle("class") -- adds the class if it doesn't exist, otherwise removes it.</li>
+                    <li>elem.classList.contain("class") -- checks for the given class, returns true or false </li>
+                </ul>
+            </li> <br>
+            <li>setTimeout:
+                <p class="margin-top">without arguments</p>
+                <pre><code class="language-js">let timerId = setTimeout(()=>{
+    //function code
+},3000)</code></pre>
+                <p>with arguments</p>
+                <pre><code class="language-js">let timerId = setTimeout((x,y)=>{
+    //function code
+},3000, arg1, arg2) </code></pre>
+                <p>clearTimeout is used to cancel the execution of setTimeout</p>
+                <pre><code class="language-js">clearTimeout("timerId");</code></pre>
+            </li> <br>
+            <li>setInterval: it has the same syntax as setTimeout.
+                <p class="margin-top">without arguments</p>
+                <pre><code class="language-js">let timerId = setInterval(()=>{
+    //function code
+},3000)</code></pre>
+                <p>with arguments</p>
+                <pre><code class="language-js">let timerId = setInterval((x,y)=>{
+    //function code
+},3000, arg1, arg2) </code></pre>
+                <p>To stop further calls, we can use clearInterval</p>
+                <pre><code class="language-js">clearTimeout("timerId");</code></pre>
+            </li> <br>
+            <li>Browser Events: A signal that something has happened. All the DOM nodes generate such signals.
+                <p>Some important DOM events are:</p>
+                <ul>
+                    <li>Mouse events: click, context menu(right click), mouse over/mouse out, mouse down/mouse up, mouse move</li>
+                    <li>Keyboard events: keydown and keyup</li>
+                    <li>form element events: submit, focus, etc.</li>
+                    <li>document events: DOMContentLoaded.</li>
+                </ul>
+            </li> <br>
+            <li>Handling Events: Events can be handled through HTML attributes.
+                <pre><code class="language-html">&lt;button onclick="changeColor('blue')" class="blue"&gt;Blue&lt;/button&gt;
+&lt;button onclick="changeColor('green')" class="green"&gt;Green&lt;/button&gt;
+&lt;script&gt;
+    function changeColor(color) {
+        document.body.style.background = color
+    } 
+&lt;/script&gt;</code></pre>
+                <p>Events can also be handled through the onclick property.</p>
+                <pre><code class="language-js">element.onclick = function(){
+    //block of code
+};</code></pre>
+            </li>
+            <li>addEventListener
+                <pre><code class="language-html">&lt;button&gt;Change Color&lt;/button&gt;
+&lt;script&gt;
+    const btn = document.querySelector("button");
+    btn.addEventListener("click", ()=&gt;{
+    document.body.style.color = "blue";
+    });
+&lt;/script&gt;</code></pre>
+                <p>there is a property called removeEventListener which must have the same handler function to work</p>
+            </li><br>
+            <li>Event Object: When an event happens, the browser creates an event object, puts details into it and passes it as an argument to the handler.
+                <pre><code class="language-js">const btn = document.querySelector("button");
+function bgChange(e) {
+    e.target.style.backgroundColor = 'red';
+}
+btn.addEventListener("click", bgChange);</code></pre>
+                <p>we are setting a background color style on e.target — which is the button itself. The target property of the event object is always a reference to the element the event occurred upon. So, in this example, we are setting a red background color on the button, not the page.</p>
+                <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_objects" target="_blank">MDN Reference Event Objects</a>
+            </li> <br>
+            <li>Asynchronous actions are the actions that we initiate now and they finish later. Eg: setTimeout</li> <br>
+            <li>Callback Functions: it is a function which is passed into another function as an argument, which is then invoked inside the outer function to complete an action.
+                <p>Example of a callback function:</p>
+                <pre><code class="language-js">function loadScript(src,callback){
+    let script = document.createElement("script");
+    script.src = src;
+    script.onload = () => callback(script);
+    document.head.append(script);
+}
+
+loadScript("https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js",(script)=>{
+    alert("script is loaded");
+    alert(script.src);
+});</code></pre>
+            <p>When you pass a function as an argument, remember not to use parenthesis.</p><br>
+            <p>A function that does something asynchronously should provide a callback argument where we put the function to run after its complete.</p>
+            </li><br>
+            <li>Error handling using callback functions:
+                <pre><code class="language-js">function loadScript(src, callback) {
+    let script = document.createElement("script");
+    script.src = src;
+    script.onload = () => callback(null,script);
+    script.onerror = () => callback(new Error("failed"));
+    document.head.append(script);
+}
+
+loadScript("https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js", (error, script) => {
+    if(error){
+        //Error handling code
+    }
+    else{
+        alert("Script is loaded");
+        alert(script.src);
+    }
+});</code></pre>
+            </li>
+            <li>Pyramid of doom: when we have callback inside callbacks, the calls become more nested and the code becomes deeper and increasingly more difficult to manage.
+                <p>This is sometimes called "callback hell" or "pyramid of doom"</p>
+            </li> <br>
+            <li>Promises: it is a promise of code execution. The code either executes or fails,in both the cases the user will be notified.
+                <pre><code class="language-js">let promise = new Promise((resolve, reject) => {
+    //code
+});</code></pre>
+                <p>resolve and reject are two callback functions provided by javaScript.</p>
+                <p>resolve(value) -- if the job is completed successfully</p>
+                <p>reject(error) -- if the job fails</p>
+            </li> <br>
+            <li>.then and .catch
+                <p class="margin-top">.then</p>
+                <pre><code class="language-js">const p1 = new Promise((resolve, reject) => {
+    resolve("Success!");
+    // or
+    // reject(new Error("Error!"));
+});
+p1.then(
+    (value) => {
+        console.log(value); // Success!
+    },
+    (error) => {
+        console.error(error); // Error!
+    },
+);</code></pre>   
+            <p>If we are interested only in successful completions, we can provide onlt one function argument to .then()</p>
+                <pre><code class="language-js">let promise = new Promise((resolve) => {
+    setTimeout(() => {
+        resolve('done')
+    }, 1000);
+});
+
+promise.then(alert);</code></pre>
+            <p>Since promise function has only one parameter, parenthesis can be removed from it, and setTimeout has only one line of code we can remove the curly brackets from it</p>
+            <pre><code class="language-js">let promise = new Promise(resolve => {
+    setTimeout(() => resolve('done')
+    , 1000);
+});
+
+promise.then(alert);</code></pre>   
+                <p>If we are interested only in errors, we can use null as the first argument: .then(null,function) or can use promise.catch(alert)</p>
+                <p class="margin-top">promise.finally(()=>{})is uded to perform general cleanups.</p>
+            </li> <br>
+            <li>Promise Chaining: we can chain promises and make them pass through resolved values
+                <pre><code class="language-js">let countValue = new Promise(function (resolve, reject) {
+    resolve("Promise resolved");
+});
+countValue
+    .then(function successValue(result) {
+        console.log(result);
+    })
+    .then(function successValue1() {
+        console.log("You can call multiple functions this way.");
+    })
+    .catch(
+        function errorValue(result) {
+            console.log(result);
+        }
+    );</code></pre>
+            </li> <br>
+            <li>Attaching multiple handlers: We can pass multiple handlers to onepromise.They dont pass the result to each other; instead they parocess it independently.
+                <p>Let p be a promise</p>
+                <p>p.then(handler1)</p>
+                <p>p.then(handler2)</p>
+                <p>p.then(handler3)</p>
+            </li> <br>
+            <li>Promise API
+                <p class="margin-top">They are 6 static methods of promise class:</p>
+                <ol type="a">
+                    <li>Promise.all(promises) -- waits for all promises to resolve and returns the array of their results. If any one fails, it becomes the error and other results are ignored.
+                        <pre><code class="language-js">const promise1 = Promise.resolve(3);
+const promise2 = 42;
+const promise3 = new Promise((resolve, reject) => {
+    setTimeout(resolve, 100, 'foo');
+});
+
+Promise.all([promise1, promise2, promise3]).then((values) => {
+    console.log(values);
+});</code></pre>
+                    </li>
+                    <li>Promise.allSettled(promises) -- waits for all the promises to settle and returns their results as an array of objects with status and value
+                    <pre><code class="language-js">const promise1 = Promise.resolve(3);
+const promise2 = 42;
+const promise3 = new Promise((resolve, reject) => {
+    setTimeout(resolve, 100, 'foo');
+});
+
+Promise.allSettled([promise1, promise2, promise3]).then((values) => {
+    console.log(values);
+});</code></pre></li>
+                    <li>Promise.race(promises) -- waits for the first promise to settle andits result/error becomes te outcome</li> <br>
+                    <li>Promise.any(promises) -- waits for the first promise to fulfill(not rejected),and its result becomes the outcome.Throws AggregateError if all the promises are rejected.</li> <br>
+                    <li>promise.resolve(value) -- makes a resolved promise with the given value
+                        <pre><code class="language-js">const promise1 = Promise.resolve(123);
+promise1.then((value) => {
+    console.log(value);
+});</code></pre> </li> <br>
+                    <li>promise.reject(error) -- makes a rejected promise with the given error</li> <br>
+                </ol>
+            </li>
+            <li>async/await: this is a special syntax to work with promises.
+                <p>A function can be made async by using async keyword like:</p>
+                <pre><code class="language-js">async function func_name() {
+    return 7;
+}</code></pre>
+                <p>An async function always return a promise.Other values are wrapped in a promise automatically</p>
+            </li> <br>
+            <li>await keyword:this works only inside async functions
+                <p>The await keyword makes javascriptwait until the promise settles an returns its value</p>
+                <pre><code class="language-js">async function f() {
+    let promise = new Promise((resolve, reject) => {
+        setTimeout(() => resolve("done!"), 1000)
+    });
+    let result = await promise; // wait until the promise resolves (*)
+    alert(result); 
+}
+f();</code></pre>
+            </li>
+            <li>try catch syntax: it allows us to catch errors so that the script instead of dying can do something moe reasonable
+                <pre><code class="language-js">try {
+    //try the code
+} catch (err) {
+    //error handling
+}</code></pre>
+                <p>the err variable contains an error object</p>
+                <p>First the code in try is executed, if there is no error catch is ignores else catch is executed.</p>
+                <p>try catch works synchronously</p>
+            </li> <br>
+            <li>error object: for all the built in errors, the error object has two main properties:
+                <pre><code class="language-js">try {
+    //try the code
+} catch (error) {
+    alert(err.name);
+    alert(err.message);
+    alert(err.stack);
+}</code></pre>
+            </li>
+            <li>Throwing custom error
+                
+            </li>
+            <li>javaScript can be used to send(request) and retrieve(response) information from the network when needed(AJAX)
+                <p>AJAX = Asynchronous JavaScript And XML.</p>
+                <p>AJAX is not a programming language.</p>
+                <p>AJAX just uses a combination of:
+                    A browser built-in XMLHttpRequest object (to request data from a web server)
+                    JavaScript and HTML DOM (to display or use the data)</p>
+            </li> <br>
+            <li> HTTP request: There are 5 common HTTP verbs:
+                <p>GET - retrieve some information to be READ by the client/user</p>
+                <p>POST - CREATE a new resource with information contained in the request</p>
+                <p>PUT - UPDATE an entire resource with information contained in the request</p>
+                <p>PATCH - UPDATE a part of a resource with information contained in the request</p>
+                <p>DELETE - DESTROY a resource, typically indicating that it is removed from the database</p>
+                <p class="margin-top">With these 5 verbs, we send requests that allow us to perform all CRUD functions (create, read, update, destroy) for resources in a database!</p>
+            </li> <br>
+            <li>FETCH API
+                <pre><code class="language-js">async function funcName(url) {
+    const response = await fetch(url);
+    var data = await response.json();
+}</code></pre>
+                <p>Getting a response is a 2-stage process:</p>
+                <ol type="i" class="margin-top">
+                    <li>An object of response class containing status and ok properties
+                        <ul>
+                            <li>status -- HTTP status codes are three-digit numbers that provide information about the outcome of an HTTP request. Common status codes include 200 for a successful request, 404 for "Not Found," 500 for "Internal Server Error," and so on.</li>
+                            <li>ok -- The ok property is a boolean value derived from the status property. It is true if the status property is within the range 200-299 (indicating a successful request), and false otherwise</li>
+                        </ul>
+                    </li> <br>
+                    <li>After that we need to call another method to access the response in different formats:
+                        <ul>
+                            <li>response.text() -- read and return the text</li>
+                            <li>response.json() -- parse the response as JSON</li>
+                        </ul>
+                        <p>Other methods include response.formData(), response.blob(), response.arrayBuffer()</p>
+                        <p class="margin-top">We can use only one body reading method, for example if we have already got the value with response.text() then response.json() won't work</p>
+                    </li>
+                </ol>
+            </li> <br>
+            <li>Response headers: It holds additional information about the response, like its location or about the server providing it.</li> <br>
+            <li>Request headers: It is an HTTP header that can be used in an HTTP request to provide information about the request context, so that the server can tailor the response
+                <p class="margin-top">To set a request header in fetch, we can use the headers option</p>
+                <pre><code class="language-js">let response = fetch(url, [header_options]);</code></pre>
+                <p>without options, a GET request is sent</p>
+            </li> <br>
+            <li>POST requests: The FetchAPI is a built-in method that takes in one compulsory parameter: the endpoint (API URL). While the other parameters may not be necessary when making a GET request, they are very useful for the POST HTTP request.
+            <p>The second parameter is used to define the body (data to be sent) and type of request to be sent, while the third parameter is the header that specifies the type of data you will send, for example JSON.</p>
+                <pre><code class="language-js">let response = await fetch(url, {
+method: "POST",
+body: JSON.stringify({
+    userId: 1,
+    title: "Fix my bugs",
+    completed: false
+}),
+headers: {
+    "Content-type": "application/json; charset=UTF-8"
+}
+})
+let result = await response.json();</code></pre>
+                <p>In the code above, the body holds the data to be sent to the server.The headers hold the type of content you want to send to the server, which in this case is JSON data.
+                </p>
+                <p class="margin-top">It is always best to serialize your data before sending it to a web server or API using the JSON.stringify() method. This will help convert and ensure your JSON data is in string format.</p>
+            </li> <br>
+            <li>JavaScript Cookies
+                <p>After a web server sends a web page to a browser, the connection shuts down and all information held by the server is lost. This makes maintaining user state challenging, as we cannot refer to the server for values specific to the current user's browser activity. Cookies overcome this obstacle by storing the required information on the user's computer(browser) in the form of a name=value string.</p> <br>
+                <p>Cookies are mainly used for three purposes:</p>
+                <ol type="i">
+                    <li>Session management: Logins, shopping carts, game scores, or anything else the server should remember</li>
+                    <li>Personalization: User preferences, themes, and other settings
+                    </li>
+                    <li>Tracking:Recording and analyzing user behavior</li>
+                </ol>
+                <p class="margin-top">Cookies are set by a web server using the Set-Cookie HTTP-header. Next time when the request is sent to the same domain, the browser sends the cookie using the Cookie HTTP-header. That way the server knows who sent the request.</p>
+                <p class="margin-top">In javascript, document.cookie provide access to cookies</p>
+            </li> <br>
+            <li>Writing to cookie: An assignment to document.cookie is treated specially in a way that a write operation doesn't touch other cookies.
+                <pre><code class="language-js">document.cookie = "user = Shreyan"</code></pre>
+            </li>
+            <li>encodeURIComponent: This functon helps keep the format valid. It is used like this:
+                <pre><code class="language-js">document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);</code></pre>
+                example: <pre><code class="language-js">let uri = "https://w3schools.com/my test.asp?name=ståle&car=saab";
+let encoded = encodeURIComponent(uri);
+console.log(encoded);//https%3A%2F%2Fw3schools.com%2Fmy%20test.asp%3Fname%3Dst%C3%A5le%26car%3Dsaab</code></pre>
+                <p>This way special symbols are encoded.</p>
+            </li> <br>
+            <li>Cookie options:</li>
+            <li>Prototype:</li>
+            <li>Classes and Objects: In OOP, a class is an extensible program-code template for creating objects, providing initial values for state(member variables) and implementation of behavior(member function) 
+                <pre><code class="language-js">class Person {
+    // class methods
+    constructor(name) {
+        this.name = name;
+    }
+    // defining method
+    greet() {
+        console.log(`Hello ${this.name}`);
+    }
+}
+
+let person1 = new Person('John');
+
+// accessing property
+console.log(person1.name); // John
+
+// accessing method
+person1.greet(); // Hello John</code></pre>
+                <p>JavaScript class is a special type of function. And the typeof operator returns "function" for a class.</p>
+            </li> <br>
+            <li>Constructor: the constructor() method is called automatically by new, so we can initialise the object.</li> <br>
+            <li>Getters and setters:
+                <pre><code class="language-js">class Person {
+    constructor(name) {
+        this.name = name;
+    }
+
+    // getter
+    get personName() {
+        return this.name;
+    }
+
+    // setter
+    set personName(x) {
+        this.name = x;
+    }
+}
+
+let person1 = new Person('Jack');
+console.log(person1.name); // Jack
+
+// changing the value of name property
+person1.personName = 'Sarah';
+console.log(person1.name); // Sarah</code></pre>
+            </li>
+            <li>Class Inheritance:Inheritance enables you to define a class that takes all the functionality from a parent class and allows you to add more.
+                <p>Using class inheritance, a class can inherit all the methods and properties of another class.</p>
+                <p>This is done by using the extends keyword.</p>
+                <pre><code class="language-js">// parent class
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+
+    greet() {
+        console.log(`Hello ${this.name}`);
+    }
+}
+
+// inheriting parent class
+class Student extends Person {
+
+}
+
+let student1 = new Student('Jack');
+student1.greet();</code></pre>
+                    <p>Default constructor for derived class</p>
+                    <pre><code class="language-js">constructor(...args) {
+    super(...args);
+}</code></pre>
+            </li>
+            <li>Super Keyword: The super keyword used inside a child class denotes its parent class.
+                <pre><code class="language-js">// parent class
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+
+    greet() {
+        console.log(`Hello ${this.name}`);
+    }
+}
+
+// inheriting parent class
+class Student extends Person {
+
+    constructor(name) {
+
+        console.log("Creating student class");
+
+        // call the super class constructor and pass in the name parameter
+        super(name);
+    }
+
+}
+
+let student1 = new Student('Jack');
+student1.greet();</code></pre>
+            </li>
+            <li>Method Overriding: If a child class has the same method or property name as that of the parent class, it will use the method and property of the child class. This concept is called method overriding.
+                <pre><code class="language-js">// parent class
+class Person { 
+    constructor(name) {
+        this.name = name;
+        this.occupation = "unemployed";
+    }
+    
+    greet() {
+        console.log(`Hello ${this.name}.`);
+    }
+    
+}
+
+// inheriting parent class
+class Student extends Person {
+
+    constructor(name) {
+        
+        // call the super class constructor and pass in the name parameter
+        super(name);
+        
+        // Overriding an occupation property
+        this.occupation = 'Student';
+    }
+    
+    // overriding Person's method
+    greet() {
+        console.log(`Hello student ${this.name}.`);
+        console.log('occupation: ' + this.occupation);
+    }
+}
+
+let p = new Student('Jack');
+p.greet();</code></pre>
+            </li>
+            <li>Static method:
+                    
+            </li>
+        </ol>
+    </div>
+    <script src="prism.js"></script>
+    <!-- <script src="script.js"></script> -->
+</body>
+</html>
